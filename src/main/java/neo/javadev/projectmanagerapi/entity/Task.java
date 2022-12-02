@@ -51,4 +51,7 @@ public class Task {
     @Column(name="revenue")
     private int revenue;
 
+    @ManyToOne
+    @ToString.Exclude
+    private Project project;
 }

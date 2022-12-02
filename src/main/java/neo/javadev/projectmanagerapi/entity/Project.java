@@ -1,6 +1,8 @@
 package neo.javadev.projectmanagerapi.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,7 +60,12 @@ public class Project {
     @Column(name="revenue")
     private int revenue;
 
-    @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
-    @JoinColumn(name="task_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name="id", referencedColumnName = "id")
+    @JsonBackReference
+    private User user;
+
+    @OneToMany(targetEntity = Task.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="task_id")
     private List<Task> tasks;
 }
