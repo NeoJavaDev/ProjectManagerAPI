@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -36,4 +37,8 @@ public class User {
 
     @Column(name="nationality")
     private String nationality;
+
+    @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="project_id", referencedColumnName = "id")
+    private List<Project> projects;
 }

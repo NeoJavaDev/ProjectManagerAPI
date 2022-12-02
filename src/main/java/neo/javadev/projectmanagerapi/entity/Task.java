@@ -1,6 +1,5 @@
 package neo.javadev.projectmanagerapi.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="project")
-public class Project {
+@Table(name="task")
+public class Task {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -24,12 +23,6 @@ public class Project {
 
     @Column(name = "name")
     private String name;
-
-    @Column(name="start_date")
-    private Date startDate;
-
-    @Column(name="end_date")
-    private Date endDate;
 
     @Column(name="management")
     private int management;
@@ -58,7 +51,4 @@ public class Project {
     @Column(name="revenue")
     private int revenue;
 
-    @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
-    @JoinColumn(name="task_id", referencedColumnName = "id")
-    private List<Task> tasks;
 }
