@@ -78,14 +78,13 @@ CREATE TABLE IF NOT EXISTS `project_manager_db`.`task` (
   `distribution` INT NULL,
   `revenue` INT NULL,
   `project_id` INT NOT NULL,
-  `project_user_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `project_id`, `project_user_id`),
+  PRIMARY KEY (`id`, `project_id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
-  INDEX `fk_task_project1_idx` (`project_id` ASC, `project_user_id` ASC) VISIBLE,
+  INDEX `fk_task_project1_idx` (`project_id` ASC) VISIBLE,
   CONSTRAINT `fk_task_project1`
-    FOREIGN KEY (`project_id` , `project_user_id`)
-    REFERENCES `project_manager_db`.`project` (`id` , `user_id`)
+    FOREIGN KEY (`project_id`)
+    REFERENCES `project_manager_db`.`project` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
