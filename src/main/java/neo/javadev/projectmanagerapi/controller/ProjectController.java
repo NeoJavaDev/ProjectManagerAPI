@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/projects")
 public class ProjectController {
@@ -34,7 +35,6 @@ public class ProjectController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
     @PostMapping
     public void createProject(@RequestBody Project project) {
         projectService.createProject(project);
