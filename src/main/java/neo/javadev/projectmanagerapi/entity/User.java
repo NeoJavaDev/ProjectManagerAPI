@@ -1,10 +1,8 @@
 package neo.javadev.projectmanagerapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -39,7 +37,9 @@ public class User {
     @Column(name="nationality")
     private String nationality;
 
-    @OneToMany(targetEntity = Project.class, cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
+    @JoinColumn(name ="user_id_fk", referencedColumnName = "id")
     @JsonManagedReference
     private List<Project> projects;
+
 }

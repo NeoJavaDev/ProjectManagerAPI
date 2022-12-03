@@ -3,10 +3,7 @@ package neo.javadev.projectmanagerapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="project")
+@Table(name = "project")
 public class Project {
 
     @Id
@@ -33,39 +30,18 @@ public class Project {
     @Column(name="end_date")
     private Date endDate;
 
-    @Column(name="management")
-    private int management;
-
-    @Column(name="developer")
-    private int developer;
-
-    @Column(name="software")
-    private int sofware;
-
-    @Column(name="hardware")
-    private int hardware;
-
-    @Column(name="premises")
-    private int premises;
-
-    @Column(name="furniture")
-    private int furniture;
-
-    @Column(name="sourcing")
-    private int sourcing;
-
-    @Column(name="distribution")
-    private int distribution;
-
-    @Column(name="revenue")
-    private int revenue;
+    @Column(name="logo_url")
+    private String logoUrl;
 
     @ManyToOne
-    @JoinColumn(name="id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id_fk")
     @JsonBackReference
     private User user;
 
     @OneToMany(targetEntity = Task.class, cascade = CascadeType.ALL)
-    @JoinColumn(name="task_id")
+    @JoinColumn(name ="project_id_fk", referencedColumnName = "id")
+    @JsonManagedReference
     private List<Task> tasks;
+
+
 }

@@ -1,9 +1,8 @@
 package neo.javadev.projectmanagerapi.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="task")
+@Table(name = "task")
 public class Task {
 
     @Id
@@ -51,7 +50,12 @@ public class Task {
     @Column(name="revenue")
     private int revenue;
 
+    @Column(name="logo_url")
+    private String logoUrl;
+
     @ManyToOne
-    @ToString.Exclude
+    @JoinColumn(name = "project_id_fk")
+    @JsonBackReference
     private Project project;
+
 }
