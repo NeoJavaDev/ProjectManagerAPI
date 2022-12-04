@@ -30,7 +30,7 @@ public class Task {
     private int developer;
 
     @Column(name="software")
-    private int sofware;
+    private int software;
 
     @Column(name="hardware")
     private int hardware;
@@ -52,6 +52,7 @@ public class Task {
 
     @Column(name="logo_url")
     private String logoUrl;
+
 
     @ManyToOne
     @JoinColumn(name = "project_id_fk")

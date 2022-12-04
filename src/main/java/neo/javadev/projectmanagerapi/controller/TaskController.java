@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200", originPatterns = "/project-manager/projects", maxAge = 3600)
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
@@ -41,12 +41,12 @@ public class TaskController {
         taskService.createTask(task);
     }
 
-    @PutMapping
+    @PutMapping("task/{id}")
     public void updateTask(@RequestBody Task task) {
         taskService.updateTask(task);
     }
 
-    @DeleteMapping
+    @DeleteMapping("task/{id}")
     public void deleteTask(@PathVariable("id") Long id) {
         taskService.deleteTaskById(id);
     }

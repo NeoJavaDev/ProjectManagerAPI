@@ -1,8 +1,6 @@
 package neo.javadev.projectmanagerapi.controller;
 
-import neo.javadev.projectmanagerapi.entity.Project;
 import neo.javadev.projectmanagerapi.entity.User;
-import neo.javadev.projectmanagerapi.service.ProjectService;
 import neo.javadev.projectmanagerapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200", originPatterns = "/project-manager/projects", maxAge = 3600)
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -43,12 +41,12 @@ public class UserController {
         userService.createUser(user);
     }
 
-    @PutMapping
+    @PutMapping("user/{id}")
     public void updateUser(@RequestBody User user) {
         userService.updateUser(user);
     }
 
-    @DeleteMapping
+    @DeleteMapping("user/{id}")
     public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUserById(id);
     }

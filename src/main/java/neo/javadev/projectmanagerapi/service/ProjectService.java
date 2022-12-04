@@ -26,6 +26,12 @@ public class ProjectService {
         return projectRepository.findById(id);
     }
 
+    public Optional<Project> getProjectByName(String name) {
+
+        List<Project> projects = projectRepository.findAll();
+        return Optional.ofNullable(projects.stream().filter(project -> project.getName() == name).findFirst().orElse(null));
+    }
+
     public void updateProject(Project project) {
         projectRepository.save(project);
     }
