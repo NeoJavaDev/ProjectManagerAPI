@@ -36,17 +36,17 @@ public class UserController {
         }
     }
 
-    @PostMapping
+    @PostMapping("user/add")
     public void createUser(@RequestBody User user) {
         userService.createUser(user);
     }
 
-    @PutMapping("user/{id}")
+    @PutMapping("user/update/{id}")
     public void updateUser(@RequestBody User user) {
         userService.updateUser(user);
     }
 
-    @DeleteMapping("user/{id}")
+    @DeleteMapping("user/delete/{id}")
     public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUserById(id);
     }

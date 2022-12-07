@@ -47,17 +47,17 @@ public class TaskController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/task/add")
     public void createTask(@RequestBody Task task) {
         taskService.createTask(task);
     }
 
-    @PutMapping("task/{id}")
+    @PutMapping("task/update/{id}")
     public void updateTask(@RequestBody Task task) {
         taskService.updateTask(task);
     }
 
-    @DeleteMapping("task/{id}")
+    @DeleteMapping("task/delete/{id}")
     public void deleteTask(@PathVariable("id") Long id) {
         taskService.deleteTaskById(id);
     }

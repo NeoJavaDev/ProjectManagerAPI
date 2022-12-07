@@ -25,7 +25,7 @@ public class ProjectController {
     private ProjectMapper projectMapper;
 
     @GetMapping
-    public List<ProjectDto> getAllProject(){
+    public List<ProjectDto> getAllProjects(){
         List<Project> projects = projectService.getAllProjects();
         List<ProjectDto> projectDtos = new ArrayList<ProjectDto>();
         for(Project project: projects) {
@@ -48,15 +48,15 @@ public class ProjectController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-    @PostMapping
+    @PostMapping("/project/add")
     public void createProject(@RequestBody Project project) {
         projectService.createProject(project);
     }
-    @PutMapping("/project/{id}")
+    @PutMapping("/project/update/{id}")
     public void updateProjectById(@RequestBody Project project) {
         projectService.updateProject(project);
     }
-    @DeleteMapping("/project/{id}")
+    @DeleteMapping("/project/delete/{id}")
     public void deleteProjectById(@PathVariable("id") Long id) {
         projectService.deleteProjectById(id);
     }
