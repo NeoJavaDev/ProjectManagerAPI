@@ -1,8 +1,7 @@
-package neo.javadev.projectmanagerapi.service;
+package neo.javadev.projectmanagerapi.mvc.service;
 
-import neo.javadev.projectmanagerapi.entity.Project;
-import neo.javadev.projectmanagerapi.entity.Task;
-import neo.javadev.projectmanagerapi.repository.TaskRepository;
+import neo.javadev.projectmanagerapi.mvc.entity.Task;
+import neo.javadev.projectmanagerapi.mvc.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

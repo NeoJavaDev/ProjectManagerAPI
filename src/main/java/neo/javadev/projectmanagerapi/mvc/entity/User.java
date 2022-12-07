@@ -1,6 +1,5 @@
-package neo.javadev.projectmanagerapi.entity;
+package neo.javadev.projectmanagerapi.mvc.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 

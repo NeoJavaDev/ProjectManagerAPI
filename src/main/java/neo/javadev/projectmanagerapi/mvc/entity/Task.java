@@ -1,12 +1,9 @@
-package neo.javadev.projectmanagerapi.entity;
+package neo.javadev.projectmanagerapi.mvc.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +19,9 @@ public class Task {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name="logo")
+    private String logo;
 
     @Column(name="management")
     private int management;
@@ -47,12 +47,14 @@ public class Task {
     @Column(name="distribution")
     private int distribution;
 
+    @Column(name="cost")
+    private Integer cost;
+
     @Column(name="revenue")
     private int revenue;
 
-    @Column(name="logo_url")
-    private String logoUrl;
-
+    @Column(name="profitability")
+    private Boolean profitable;
 
     @ManyToOne
     @JoinColumn(name = "project_id_fk")

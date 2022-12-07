@@ -7,6 +7,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema project_manager_db
 -- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema project_manager_db
+-- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `project_manager_db` DEFAULT CHARACTER SET utf8 ;
 USE `project_manager_db` ;
 
@@ -19,14 +23,13 @@ CREATE TABLE IF NOT EXISTS `project_manager_db`.`user` (
   `name` VARCHAR(45) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `nationality` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `nationality` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -35,21 +38,31 @@ DEFAULT CHARACTER SET = utf8mb3;
 CREATE TABLE IF NOT EXISTS `project_manager_db`.`project` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `start_date` DATE NOT NULL,
-  `end_date` DATE NOT NULL,
-  `logo_url` VARCHAR(100) NULL,
-  `user_id_fk` INT NOT NULL,
+  `start_date` DATE NULL,
+  `end_date` DATE NULL,
+  `logo` VARCHAR(100) NULL,
+  `management` INT NULL,
+  `developer` INT NULL,
+  `software` INT NULL,
+  `hardware` INT NULL,
+  `premises` INT NULL,
+  `furniture` INT NULL,
+  `sourcing` INT NULL,
+  `distribution` INT NULL,
+  `cost` INT NULL,
+  `revenue` INT NULL,
+  `profitability` TINYINT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
-  INDEX `fk_project_user_idx` (`user_id_fk` ASC) VISIBLE,
+  INDEX `fk_project_user_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_project_user`
-    FOREIGN KEY (`user_id_fk`)
+    FOREIGN KEY (`user_id`)
     REFERENCES `project_manager_db`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -57,29 +70,29 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `project_manager_db`.`task` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `management` INT NULL DEFAULT NULL,
-  `developer` INT NULL DEFAULT NULL,
-  `software` INT NULL DEFAULT NULL,
-  `hardware` INT NULL DEFAULT NULL,
-  `premises` INT NULL DEFAULT NULL,
-  `furniture` INT NULL DEFAULT NULL,
-  `sourcing` INT NULL DEFAULT NULL,
-  `distribution` INT NULL DEFAULT NULL,
-  `revenue` INT NULL DEFAULT NULL,
-  `logo_url` VARCHAR(100) NULL,
-  `project_id_fk` INT NOT NULL,
+  `name` VARCHAR(100) NULL,
+  `logo` VARCHAR(100) NULL,
+  `management` INT NULL,
+  `developer` INT NULL,
+  `software` INT NULL,
+  `hardware` INT NULL,
+  `premises` INT NULL,
+  `furniture` INT NULL,
+  `sourcing` INT NULL,
+  `distribution` INT NULL,
+  `cost` INT NULL,
+  `revenue` INT NULL,
+  `profitability` TINYINT NULL,
+  `project_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
-  INDEX `fk_task_project1_idx` (`project_id_fk` ASC) VISIBLE,
+  INDEX `fk_task_project1_idx` (`project_id` ASC) VISIBLE,
   CONSTRAINT `fk_task_project1`
-    FOREIGN KEY (`project_id_fk`)
+    FOREIGN KEY (`project_id`)
     REFERENCES `project_manager_db`.`project` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

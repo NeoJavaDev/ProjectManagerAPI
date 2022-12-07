@@ -1,4 +1,4 @@
-package neo.javadev.projectmanagerapi.entity;
+package neo.javadev.projectmanagerapi.mvc.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -30,8 +30,41 @@ public class Project {
     @Column(name="end_date")
     private Date endDate;
 
-    @Column(name="logo_url")
-    private String logoUrl;
+    @Column(name="logo")
+    private String logo;
+
+    @Column(name="management")
+    private Integer management;
+
+    @Column(name="developer")
+    private Integer developer;
+
+    @Column(name="software")
+    private Integer software;
+
+    @Column(name="hardware")
+    private Integer hardware;
+
+    @Column(name="premises")
+    private Integer premises;
+
+    @Column(name="furniture")
+    private Integer furniture;
+
+    @Column(name="sourcing")
+    private Integer sourcing;
+
+    @Column(name="distribution")
+    private Integer distribution;
+
+    @Column(name="cost")
+    private Integer cost;
+
+    @Column(name="revenue")
+    private Integer revenue;
+
+    @Column(name="profitability")
+    private Boolean profitable;
 
     @ManyToOne
     @JoinColumn(name = "user_id_fk")

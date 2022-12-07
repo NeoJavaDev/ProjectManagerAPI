@@ -1,6 +1,6 @@
 package neo.javadev.projectmanagerapi.dto.taskDto;
 
-import neo.javadev.projectmanagerapi.entity.Task;
+import neo.javadev.projectmanagerapi.mvc.entity.Task;
 
 public class TaskMapper {
 
@@ -9,6 +9,7 @@ public class TaskMapper {
         TaskDto taskDto = new TaskDto();
         taskDto.setId(task.getId());
         taskDto.setName(task.getName());
+        taskDto.setLogo(task.getLogo());
         taskDto.setManagement(task.getManagement());
         taskDto.setDeveloper(task.getDeveloper());
         taskDto.setSoftware(task.getSoftware());
@@ -17,7 +18,6 @@ public class TaskMapper {
         taskDto.setFurniture(task.getFurniture());
         taskDto.setSourcing(task.getSourcing());
         taskDto.setDistribution(task.getDistribution());
-        taskDto.setLogoUrl(task.getLogoUrl());
         taskDto.setProject(task.getProject());
 
         return taskDto;
@@ -28,6 +28,7 @@ public class TaskMapper {
         Task task = new Task();
         task.setId(taskDto.getId());
         task.setName(taskDto.getName());
+        task.setLogo(taskDto.getLogo());
         task.setManagement(taskDto.getManagement());
         task.setDeveloper(taskDto.getDeveloper());
         task.setSoftware(taskDto.getSoftware());
@@ -36,7 +37,6 @@ public class TaskMapper {
         task.setFurniture(taskDto.getFurniture());
         task.setSourcing(taskDto.getSourcing());
         task.setDistribution(taskDto.getDistribution());
-        task.setLogoUrl(taskDto.getLogoUrl());
         task.setProject(taskDto.getProject());
 
         return task;

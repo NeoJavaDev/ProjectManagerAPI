@@ -1,7 +1,7 @@
-package neo.javadev.projectmanagerapi.controller;
+package neo.javadev.projectmanagerapi.mvc.controller;
 
-import neo.javadev.projectmanagerapi.entity.User;
-import neo.javadev.projectmanagerapi.service.UserService;
+import neo.javadev.projectmanagerapi.mvc.entity.User;
+import neo.javadev.projectmanagerapi.mvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
