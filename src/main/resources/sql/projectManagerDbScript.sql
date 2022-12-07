@@ -52,13 +52,13 @@ CREATE TABLE IF NOT EXISTS `project_manager_db`.`project` (
   `cost` INT NULL,
   `revenue` INT NULL,
   `profitability` TINYINT NULL,
-  `user_id` INT NOT NULL,
+  `user_id_fk` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
-  INDEX `fk_project_user_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_project_user_idx` (`user_id_fk` ASC) VISIBLE,
   CONSTRAINT `fk_project_user`
-    FOREIGN KEY (`user_id`)
+    FOREIGN KEY (`user_id_fk`)
     REFERENCES `project_manager_db`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -83,12 +83,12 @@ CREATE TABLE IF NOT EXISTS `project_manager_db`.`task` (
   `cost` INT NULL,
   `revenue` INT NULL,
   `profitability` TINYINT NULL,
-  `project_id` INT NOT NULL,
+  `project_id_fk` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_task_project1_idx` (`project_id` ASC) VISIBLE,
+  INDEX `fk_task_project1_idx` (`project_id_fk` ASC) VISIBLE,
   CONSTRAINT `fk_task_project1`
-    FOREIGN KEY (`project_id`)
+    FOREIGN KEY (`project_id_fk`)
     REFERENCES `project_manager_db`.`project` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

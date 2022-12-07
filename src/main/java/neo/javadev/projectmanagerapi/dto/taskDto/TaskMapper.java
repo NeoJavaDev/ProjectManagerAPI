@@ -19,11 +19,22 @@ public class TaskMapper {
         taskDto.setSourcing(task.getSourcing());
         taskDto.setDistribution(task.getDistribution());
         taskDto.setProject(task.getProject());
+        taskDto.setCost(task.getManagement()+ task.getDeveloper()+ task.getSoftware()+ task.getHardware()
+                + task.getPremises()+ task.getFurniture()+ task.getSourcing()+ task.getDistribution());
+        taskDto.setRevenue(task.getRevenue());
+
+        int profit = taskDto.getRevenue() - taskDto.getCost();
+
+        if (profit > 0) {
+            taskDto.setProfitable(true);
+        } else {
+            taskDto.setProfitable(false);
+        }
 
         return taskDto;
     }
 
-    public static Task buildTak(TaskDto taskDto) {
+    public static Task buildTask(TaskDto taskDto) {
 
         Task task = new Task();
         task.setId(taskDto.getId());
@@ -38,6 +49,17 @@ public class TaskMapper {
         task.setSourcing(taskDto.getSourcing());
         task.setDistribution(taskDto.getDistribution());
         task.setProject(taskDto.getProject());
+        task.setCost(taskDto.getManagement()+ taskDto.getDeveloper()+ taskDto.getSoftware()+ taskDto.getHardware()
+                + taskDto.getPremises()+ taskDto.getFurniture()+ taskDto.getSourcing()+ taskDto.getDistribution());
+        task.setRevenue(taskDto.getRevenue());
+
+        int profit = task.getRevenue() - task.getCost();
+
+        if (profit > 0) {
+            task.setProfitable(true);
+        } else {
+            task.setProfitable(false);
+        }
 
         return task;
 

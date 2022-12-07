@@ -1,5 +1,6 @@
 package neo.javadev.projectmanagerapi.dto.projectDto;
 
+import neo.javadev.projectmanagerapi.dto.taskDto.TaskMapper;
 import neo.javadev.projectmanagerapi.mvc.entity.Project;
 import neo.javadev.projectmanagerapi.mvc.entity.Task;
 
@@ -7,9 +8,20 @@ import java.util.List;
 
 public class ProjectMapper {
 
+
+
     public static ProjectDto buildProjectDto(Project project) {
 
         List<Task> tasks = project.getTasks();
+        int management = 0;
+        int developer = 0;
+        int software = 0;
+        int hardware = 0;
+        int premises = 0;
+        int furniture = 0;
+        int sourcing = 0;
+        int distribution = 0;
+        int cost = 0;
         int revenue = 0;
 
         ProjectDto projectDto = new ProjectDto();
@@ -19,18 +31,28 @@ public class ProjectMapper {
         projectDto.setEndDate(project.getEndDate());
         projectDto.setLogo(project.getLogo());
         projectDto.setUser(project.getUser());
-        projectDto.setTasks(project.getTasks());
         for(Task task: tasks) {
-            projectDto.setManagement(task.getManagement());
-            projectDto.setDeveloper(task.getDeveloper());
-            projectDto.setSoftware(task.getSoftware());
-            projectDto.setHardware(task.getHardware());
-            projectDto.setPremises(task.getPremises());
-            projectDto.setFurniture(task.getFurniture());
-            projectDto.setSourcing(task.getSourcing());
-            projectDto.setDistribution(task.getDistribution());
+            management += task.getManagement();
+            developer += task.getDeveloper();
+            software += task.getSoftware();
+            hardware += task.getHardware();
+            premises += task.getPremises();
+            furniture += task.getFurniture();
+            sourcing += task.getSourcing();
+            distribution += task.getDistribution();
+            cost += task.getCost();
             revenue += task.getRevenue();
         }
+        projectDto.setTasks(tasks);
+        projectDto.setManagement(management);
+        projectDto.setDeveloper(developer);
+        projectDto.setSoftware(software);
+        projectDto.setHardware(hardware);
+        projectDto.setPremises(premises);
+        projectDto.setFurniture(furniture);
+        projectDto.setSourcing(sourcing);
+        projectDto.setDistribution(distribution);
+        projectDto.setCost(cost);
         projectDto.setRevenue(revenue);
         if (revenue > 0 ) {
             projectDto.setProfitable(true);
@@ -44,7 +66,16 @@ public class ProjectMapper {
     public static Project buildProject(ProjectDto projectDto) {
 
         List<Task> tasks = projectDto.getTasks();
+        int management = 0;
+        int developer = 0;
+        int software = 0;
+        int hardware = 0;
+        int premises = 0;
+        int furniture = 0;
+        int sourcing = 0;
+        int distribution = 0;
         int revenue = 0;
+        int cost = 0;
 
         Project project = new Project();
         project.setId(projectDto.getId());
@@ -55,21 +86,31 @@ public class ProjectMapper {
         project.setUser(projectDto.getUser());
         project.setTasks(projectDto.getTasks());
         for(Task task: tasks) {
-            project.setManagement(task.getManagement());
-            project.setDeveloper(task.getDeveloper());
-            project.setSoftware(task.getSoftware());
-            project.setHardware(task.getHardware());
-            project.setPremises(task.getPremises());
-            project.setFurniture(task.getFurniture());
-            project.setSourcing(task.getSourcing());
-            project.setDistribution(task.getDistribution());
+            management += task.getManagement();
+            developer += task.getDeveloper();
+            software += task.getSoftware();
+            hardware += task.getHardware();
+            premises += task.getPremises();
+            furniture += task.getFurniture();
+            sourcing += task.getSourcing();
+            distribution += task.getDistribution();
+            cost += task.getCost();
             revenue += task.getRevenue();
         }
+        project.setManagement(management);
+        project.setDeveloper(developer);
+        project.setSoftware(software);
+        project.setHardware(hardware);
+        project.setPremises(premises);
+        project.setFurniture(furniture);
+        project.setSourcing(sourcing);
+        project.setDistribution(distribution);
+        project.setCost(cost);
         project.setRevenue(revenue);
         if (revenue > 0 ) {
-            project.setProfitable(true);
+            projectDto.setProfitable(true);
         } else {
-            project.setProfitable(false);
+            projectDto.setProfitable(false);
         }
 
         return project;

@@ -48,36 +48,149 @@ public class ProjectDto {
 
     private Integer cost;
     private Integer revenue;
-
     private Boolean profitable;
 
+    public Long getId() {
+        return id;
+    }
 
-    public ProjectDto(Long id, String name, Date startDate, Date endDate, String logo, User user, List<Task> tasks) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
 
-        for (Task task : tasks) {
-            this.management += task.getManagement();
-            this.developer += task.getDeveloper();
-            this.software += task.getSoftware();
-            this.hardware += task.getHardware();
-            this.premises += task.getPremises();
-            this.furniture += task.getFurniture();
-            this.sourcing += task.getSourcing();
-            this.distribution += task.getDistribution();
-            this.cost += task.getCost();
-            this.revenue += task.getRevenue();
-        }
+    public Integer getManagement() {
+        return management;
+    }
 
-        if (revenue - cost < 1) {
-            this.profitable = true;
-        } else {
-            this.profitable = false;
-        }
+    public void setManagement(Integer management) {
+        this.management = management;
+    }
+
+    public Integer getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(Integer developer) {
+        this.developer = developer;
+    }
+
+    public Integer getSoftware() {
+        return software;
+    }
+
+    public void setSoftware(Integer software) {
+        this.software = software;
+    }
+
+    public Integer getHardware() {
+        return hardware;
+    }
+
+    public void setHardware(Integer hardware) {
+        this.hardware = hardware;
+    }
+
+    public Integer getPremises() {
+        return premises;
+    }
+
+    public void setPremises(Integer premises) {
+        this.premises = premises;
+    }
+
+    public Integer getFurniture() {
+        return furniture;
+    }
+
+    public void setFurniture(Integer furniture) {
+        this.furniture = furniture;
+    }
+
+    public Integer getSourcing() {
+        return sourcing;
+    }
+
+    public void setSourcing(Integer sourcing) {
+        this.sourcing = sourcing;
+    }
+
+    public Integer getDistribution() {
+        return distribution;
+    }
+
+    public void setDistribution(Integer distribution) {
+        this.distribution = distribution;
+    }
+
+    public Integer getCost() {
+        return cost;
+    }
+
+    public void setCost(Integer cost) {
+        this.cost = cost;
+    }
+
+    public Integer getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(Integer revenue) {
+        this.revenue = revenue;
+    }
+
+    public Boolean getProfitable() {
+        return profitable;
+    }
+
+    public void setProfitable(Boolean profitable) {
+        this.profitable = profitable;
     }
 }
