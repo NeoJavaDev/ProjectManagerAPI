@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
-@CrossOrigin(origins = "http://localhost:4200", originPatterns = "/project-manager/projects", maxAge = 3600)
 @RestController
-@RequestMapping("/projects")
 public class ProjectController {
 
     @Autowired
@@ -24,7 +21,7 @@ public class ProjectController {
 
     private ProjectMapper projectMapper;
 
-    @GetMapping
+    @GetMapping("/projects")
     public List<ProjectDto> getAllProjects(){
         List<Project> projects = projectService.getAllProjects();
         List<ProjectDto> projectDtos = new ArrayList<ProjectDto>();
@@ -36,7 +33,7 @@ public class ProjectController {
     }
 
     // BY ID
-    @GetMapping("/project/{id}")
+    @GetMapping("project/{id}")
     public ResponseEntity<ProjectDto> getProjectById(@PathVariable("id") Long id) {
         ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
         Optional<Project> optionalProject = projectService.getProjectById(id);

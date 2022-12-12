@@ -24,7 +24,7 @@ public class UserController {
         return users;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("user/{id}")
     public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
         ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
         Optional<User> optionalUser = userService.getUserById(id);
