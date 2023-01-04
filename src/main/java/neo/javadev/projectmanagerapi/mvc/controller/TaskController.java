@@ -21,7 +21,7 @@ public class TaskController {
 
     private TaskMapper taskMapper;
 
-    @GetMapping("/tasks")
+    @GetMapping("tasks")
     public List<TaskDto> getAllTasks(){
         List<Task> tasks = taskService.getAllTasks();
         List<TaskDto> taskDtos = new ArrayList<TaskDto>();
@@ -45,7 +45,7 @@ public class TaskController {
         }
     }
 
-    @PostMapping("/task/add")
+    @PostMapping("task/add")
     public void createTask(@RequestBody Task task) {
         taskService.createTask(task);
     }
