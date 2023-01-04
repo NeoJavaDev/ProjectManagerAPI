@@ -13,9 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:4200", originPatterns = "/project-manager/projects", maxAge = 3600)
 @RestController
-@RequestMapping("/tasks")
 public class TaskController {
 
     @Autowired
@@ -23,7 +21,7 @@ public class TaskController {
 
     private TaskMapper taskMapper;
 
-    @GetMapping
+    @GetMapping("/tasks")
     public List<TaskDto> getAllTasks(){
         List<Task> tasks = taskService.getAllTasks();
         List<TaskDto> taskDtos = new ArrayList<TaskDto>();
@@ -34,8 +32,8 @@ public class TaskController {
         return taskDtos;
     }
 
-    @GetMapping("/task/{id}")
-    public ResponseEntity<TaskDto> getTask(@PathVariable("id") Long id) {
+    @GetMapping("task/{id}")
+    public ResponseEntity<TaskDto> getTaskById(@PathVariable("id") Long id) {
         ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
         Optional<Task> optionalTask = taskService.getTaskById(id);
         if(optionalTask.isPresent()){
@@ -53,12 +51,12 @@ public class TaskController {
     }
 
     @PutMapping("task/update/{id}")
-    public void updateTask(@RequestBody Task task) {
+    public void updateTaskById(@RequestBody Task task) {
         taskService.updateTask(task);
     }
 
     @DeleteMapping("task/delete/{id}")
-    public void deleteTask(@PathVariable("id") Long id) {
+    public void deleteTaskById(@PathVariable("id") Long id) {
         taskService.deleteTaskById(id);
     }
 }

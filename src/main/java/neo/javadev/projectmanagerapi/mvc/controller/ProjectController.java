@@ -59,7 +59,7 @@ public class ProjectController {
     }
 
     //BY NAME
-    @GetMapping("/project/{name}")
+    /*@GetMapping("/project/{name}")
     public ResponseEntity<ProjectDto> getProjectByName(@PathVariable("name") String name) {
         ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
         Optional<Project> optionalProject = projectService.getProjectByName(name);
@@ -70,5 +70,5 @@ public class ProjectController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-    }
+    }*/
 }

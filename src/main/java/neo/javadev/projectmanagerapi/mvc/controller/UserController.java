@@ -10,15 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:4200", originPatterns = "/project-manager/projects", maxAge = 3600)
 @RestController
-@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("/users")
     public List<User> getAllUsers(){
         List<User> users = userService.getAllUsers();
         return users;
@@ -30,7 +28,7 @@ public class UserController {
         Optional<User> optionalUser = userService.getUserById(id);
         if(optionalUser.isPresent()){
             User user = optionalUser.get();
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.status(HttpStatus.OK).body(user);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
