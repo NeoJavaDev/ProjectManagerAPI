@@ -50,8 +50,8 @@ public class TaskController {
         taskService.createTask(task);
     }
 
-    @PutMapping("task/update/{id}")
-    public void updateTaskById(@RequestBody Task task) {
+    @PutMapping("task/update")
+    public void updateTask(@RequestBody Task task) {
         taskService.updateTask(task);
     }
 
@@ -59,4 +59,5 @@ public class TaskController {
     public void deleteTaskById(@PathVariable("id") Long id) {
         taskService.deleteTaskById(id);
     }
+
 }
