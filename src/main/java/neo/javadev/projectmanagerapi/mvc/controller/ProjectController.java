@@ -6,6 +6,7 @@ import neo.javadev.projectmanagerapi.mvc.entity.Project;
 import neo.javadev.projectmanagerapi.mvc.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,11 +46,11 @@ public class ProjectController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-    @PostMapping("project/add")
+    @RequestMapping(value ="project/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createProject(@RequestBody Project project) {
         projectService.createProject(project);
     }
-    @PutMapping("project/update/{id}")
+    @RequestMapping(value ="project/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateProjectById(@RequestBody Project project) {
         projectService.updateProject(project);
     }
