@@ -36,14 +36,10 @@ public class UserController {
     }
 
     @RequestMapping(value ="user/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createUser(@RequestBody User user) {
-        userService.createUser(user);
-    }
+    public void createUser(@RequestBody User user) {userService.createUser(user);}
 
     @RequestMapping(value ="user/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateUser(@RequestBody User user) {
-        userService.updateUser(user);
-    }
+    public void updateUser(@RequestBody User user) {userService.updateUser(user);}
 
     @DeleteMapping("user/delete/{id}")
     public void deleteUser(@PathVariable("id") Long id){

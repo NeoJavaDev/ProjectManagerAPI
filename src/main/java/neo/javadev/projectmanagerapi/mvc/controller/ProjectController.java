@@ -46,12 +46,12 @@ public class ProjectController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-    @RequestMapping(value ="project/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "project/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createProject(@RequestBody Project project) {
         projectService.createProject(project);
     }
-    @RequestMapping(value ="project/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateProjectById(@RequestBody Project project) {
+    @RequestMapping(value = "project/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateProject(@RequestBody Project project) {
         projectService.updateProject(project);
     }
     @DeleteMapping("project/delete/{id}")
@@ -59,17 +59,4 @@ public class ProjectController {
         projectService.deleteProjectById(id);
     }
 
-    //BY NAME
-    /*@GetMapping("/project/{name}")
-    public ResponseEntity<ProjectDto> getProjectByName(@PathVariable("name") String name) {
-        ResponseEntity responseEntity = new ResponseEntity(HttpStatus.NOT_FOUND);
-        Optional<Project> optionalProject = projectService.getProjectByName(name);
-        if(optionalProject.isPresent()){
-            Project project = optionalProject.get();
-            ProjectDto projectDto = projectMapper.buildProjectDto(project);
-            return ResponseEntity.status(HttpStatus.OK).body(projectDto);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-    }*/
 }
