@@ -46,7 +46,7 @@ public class TaskController {
         }
     }
 
-    @RequestMapping(value = "task/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "task/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createTask(@RequestBody Task task) {taskService.createTask(task);}
     @RequestMapping(value = "task/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateTask(@RequestBody Task task) {taskService.updateTask(task);}
