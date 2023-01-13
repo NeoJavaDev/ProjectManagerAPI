@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import neo.javadev.projectmanagerapi.mvc.entity.Task;
-import neo.javadev.projectmanagerapi.mvc.entity.User;
+import neo.javadev.projectmanagerapi.rest.entity.Task;
+import neo.javadev.projectmanagerapi.rest.entity.User;
 
 import java.util.Date;
 import java.util.List;

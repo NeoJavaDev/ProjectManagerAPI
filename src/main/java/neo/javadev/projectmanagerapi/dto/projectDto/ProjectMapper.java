@@ -1,8 +1,7 @@
 package neo.javadev.projectmanagerapi.dto.projectDto;
 
-import neo.javadev.projectmanagerapi.dto.taskDto.TaskMapper;
-import neo.javadev.projectmanagerapi.mvc.entity.Project;
-import neo.javadev.projectmanagerapi.mvc.entity.Task;
+import neo.javadev.projectmanagerapi.rest.entity.Project;
+import neo.javadev.projectmanagerapi.rest.entity.Task;
 
 import java.util.List;
 

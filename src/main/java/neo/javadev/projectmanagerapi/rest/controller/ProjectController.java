@@ -1,9 +1,9 @@
-package neo.javadev.projectmanagerapi.mvc.controller;
+package neo.javadev.projectmanagerapi.rest.controller;
 
 import neo.javadev.projectmanagerapi.dto.projectDto.ProjectDto;
 import neo.javadev.projectmanagerapi.dto.projectDto.ProjectMapper;
-import neo.javadev.projectmanagerapi.mvc.entity.Project;
-import neo.javadev.projectmanagerapi.mvc.service.ProjectService;
+import neo.javadev.projectmanagerapi.rest.entity.Project;
+import neo.javadev.projectmanagerapi.rest.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -54,7 +54,7 @@ public class ProjectController {
     public void updateProject(@RequestBody Project project) {
         projectService.updateProject(project);
     }
-    @DeleteMapping("project/delete/{id}")
+    @RequestMapping(value = "project/delete/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void deleteProjectById(@PathVariable("id") Long id) {
         projectService.deleteProjectById(id);
     }

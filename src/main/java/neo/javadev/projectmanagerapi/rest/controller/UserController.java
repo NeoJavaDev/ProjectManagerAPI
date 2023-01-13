@@ -1,7 +1,7 @@
-package neo.javadev.projectmanagerapi.mvc.controller;
+package neo.javadev.projectmanagerapi.rest.controller;
 
-import neo.javadev.projectmanagerapi.mvc.entity.User;
-import neo.javadev.projectmanagerapi.mvc.service.UserService;
+import neo.javadev.projectmanagerapi.rest.entity.User;
+import neo.javadev.projectmanagerapi.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,7 +41,7 @@ public class UserController {
     @RequestMapping(value ="user/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateUser(@RequestBody User user) {userService.updateUser(user);}
 
-    @DeleteMapping("user/delete/{id}")
+    @RequestMapping(value ="user/delete/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUserById(id);
     }

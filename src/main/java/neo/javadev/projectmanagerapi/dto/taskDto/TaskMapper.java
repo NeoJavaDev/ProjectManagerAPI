@@ -1,6 +1,6 @@
 package neo.javadev.projectmanagerapi.dto.taskDto;
 
-import neo.javadev.projectmanagerapi.mvc.entity.Task;
+import neo.javadev.projectmanagerapi.rest.entity.Task;
 
 public class TaskMapper {
 

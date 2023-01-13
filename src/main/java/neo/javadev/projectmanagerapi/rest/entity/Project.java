@@ -1,4 +1,4 @@
-package neo.javadev.projectmanagerapi.mvc.entity;
+package neo.javadev.projectmanagerapi.rest.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;

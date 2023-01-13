@@ -1,6 +1,6 @@
-package neo.javadev.projectmanagerapi.mvc.repository;
+package neo.javadev.projectmanagerapi.rest.repository;
 
-import neo.javadev.projectmanagerapi.mvc.entity.Task;
+import neo.javadev.projectmanagerapi.rest.entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {

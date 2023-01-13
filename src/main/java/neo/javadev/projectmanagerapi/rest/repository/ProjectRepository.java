@@ -1,6 +1,6 @@
-package neo.javadev.projectmanagerapi.mvc.repository;
+package neo.javadev.projectmanagerapi.rest.repository;
 
-import neo.javadev.projectmanagerapi.mvc.entity.Project;
+import neo.javadev.projectmanagerapi.rest.entity.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {

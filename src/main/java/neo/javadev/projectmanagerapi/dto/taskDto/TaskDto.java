@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import neo.javadev.projectmanagerapi.mvc.entity.Project;
+import neo.javadev.projectmanagerapi.rest.entity.Project;
 
 @Data
 @AllArgsConstructor
